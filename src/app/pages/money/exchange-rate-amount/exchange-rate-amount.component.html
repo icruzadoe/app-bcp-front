@@ -1,0 +1,32 @@
+
+<form [formGroup]="firstFormGroup" >
+  <div class="inputGroup inputGroup1" style="text-align: center">
+    <h1>Calcular tipo de cambio</h1>
+  </div>
+
+  <mat-form-field appearance="fill">
+<!--    <mat-label>Elige una opción</mat-label>-->
+    <mat-select placeholder="Tipo moneda actual" [(value)]="currentTypeChange"  formControlName="currentTypeChange">
+      <mat-option *ngFor="let typeChangeCurrent of typesChanges" [value]="typeChangeCurrent">
+        {{ typeChangeCurrent.origin_currency }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <input type="number" placeholder="Ingrese monto" formControlName="monto" name="monto"/>
+  <mat-form-field appearance="fill">
+    <mat-select placeholder="Tipo de moneda de cambio" [(value)]="newTypeChange" formControlName="newTypeChange">
+      <mat-option *ngFor="let newTypeChangeCurrent of typesChanges" [value]="newTypeChangeCurrent">
+        {{ newTypeChangeCurrent.destination_currency }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>>
+
+  <div class="inputGroup inputGroup3" style="margin-top:50px">
+    <button id="login" type="button" (click)="calculate()">CALCULAR
+      <i class="fa fa-sign-in" aria-hidden="true"></i>
+    </button>
+  </div>
+<div style="margin-top:50px">
+  <span >Resultado:{{resultado}}</span>
+</div>
+</form>
